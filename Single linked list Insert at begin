@@ -17,7 +17,7 @@ void insertbegin(struct Node**head,int data)
 void display(struct Node *n)
 {
 
-
+        printf("Before Inserting: "); 
 	while ( n != NULL)
 	{
 		printf ("%d ", n->data);
@@ -31,7 +31,7 @@ void main ()
 	printf("Enter number of nodes: ");
 	scanf("%d",&num);
 	struct Node *head =(struct Node*)malloc(sizeof(struct Node));
-	printf("\nEnter data: \n");
+	printf("\nEnter data:  ");
 	scanf("%d",&head->data);
 	head->next=NULL;
 	struct Node *tail = head;
@@ -56,13 +56,9 @@ void main ()
 OUTPUT:
 Enter number of nodes: 5
 
-Enter data: 
-1
-2
-3
-4
-5
-1 2 3 4 5 
+Enter data: 1 2 3 4 5 
+ 
+Before inserting: 1 2 3 4 5 
 
 Enter the element to be inserted: 0
 
