@@ -1,0 +1,70 @@
+ #include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+};
+void display(struct node *n)
+{
+    while(n!=NULL)
+    {
+        printf("%d  ",n->data);
+        n=n->next;
+    }
+    printf("\n");
+}
+
+
+void delete_begin(struct node **head)
+{
+    struct node *p;
+    p=*head;
+    *head=p->next;
+    free(p);
+}
+
+void main()
+{
+    int num,in;
+    struct node *n;
+    printf("Enter the number of node: ");
+    scanf("%d",&num);
+        if(num==0)
+    {
+        printf("there is no linked list");
+        return;
+    }
+    struct node *head=(struct node*)malloc(sizeof(struct node));
+    printf("\nEnter data: ");
+    scanf("%d",&head->data);
+    head->next=NULL;
+
+    struct node *tail=head;
+
+    for(int i=1;i<num;i++)
+    {
+        n=(struct node*)malloc(sizeof(struct node));
+        scanf("%d",&n->data);
+        n->next=NULL;
+        tail->next=n;
+        tail=tail->next;
+    }
+    printf("\nBefore deleting   ");
+    display(head);
+    delete_begin(&head);
+    printf("\nAfter deleting   ");
+    display(head);
+
+
+}
+
+OUTPUT
+
+Enter the number of node: 5
+
+Enter data: 1 2 3 4 5
+
+Before deleting   1  2  3  4  5  
+
+After deleting   2  3  4  5  
