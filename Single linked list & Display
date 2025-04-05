@@ -37,7 +37,7 @@ void main ()
 		tail=tail->next;
 
 	}
-
+         printf("LINKED LIST IS:  ");
 	display(head);
 }
 
@@ -45,10 +45,6 @@ void main ()
 OUTPUT:
 Enter number of nodes: 5
 
-Enter data: 
-10
-20
-30
-40
-50
-10 20 30 40 50 
+Enter data: 10 20 30 40 50 
+LINKED LIST IS:  
+      10 20 30 40 50 
