@@ -1,0 +1,76 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int  data;
+	struct node *next;
+};
+void insert_end(struct node**head)
+{	int ele;
+	struct node *p;
+	p=*head;
+	printf("\nEnter the element to be inserted: ");
+	scanf("%d",&ele);
+	struct node *n=(struct node*)malloc(sizeof(struct node));
+	n->data=ele;
+	while(p->next!=*head)
+		p=p->next;
+	p->next=n;
+	n->next=*head;
+
+}
+void display(struct node *head)
+{
+	struct node *p=head;
+	printf("The linked list is: ");
+	do {
+		printf("%d ", p->data);
+		p=p->next;
+	}
+	while ( p !=head);
+	printf ("\n");
+}
+int main ()
+{	int num,in;
+	struct node *n;
+	printf("Enter number of nodes: ");
+	scanf("%d",&num);
+	if (num <= 0) 
+	{
+        printf("No nodes to create.\n");
+        return 0;
+	}
+	struct node *head =(struct node*)malloc(sizeof(struct node));
+	printf("\nEnter data:  ");
+	scanf("%d",&head->data);
+	head->next=head;
+	struct node *tail = head;
+
+	for(int i=1; i<num; i++)
+	{
+		n=(struct node*)malloc(sizeof(struct node));
+		scanf("%d",&n->data);
+		n->next=head;
+		tail->next=n;
+		tail=tail->next;
+
+	}
+	printf("\nBefore inserting: ");
+	display(head);
+	insert_end(&head);
+	printf("\nAfter inserting: ");
+	display(head);
+	return 0;
+}
+
+OUTPUT:  
+
+Enter number of nodes: 5
+
+Enter data:  1 2 3 4 5
+
+Before inserting: The linked list is: 1 2 3 4 5 
+
+Enter the element to be inserted: 6
+
+After inserting: The linked list is: 1 2 3 4 5 6 
