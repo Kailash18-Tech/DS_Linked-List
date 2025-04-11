@@ -1,0 +1,74 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int  data;
+	struct node *next;
+};
+void delete_begin(struct node**head)
+{	
+    struct node *p,*temp;
+    p=*head; 
+    temp=*head;
+    while(temp->next!=*head)
+    temp=temp->next;
+    *head=p->next;
+    temp->next=*head;
+    free(p);
+}
+void display(struct node *head)
+{
+	struct node *p=head;
+	printf("The linked list is: ");
+	do {
+		printf("%d ", p->data);
+		p=p->next;
+	}
+	while ( p !=head);
+	printf ("\n");
+}
+int main ()
+{	int num,in;
+	struct node *n;
+	printf("Enter number of nodes: ");
+	scanf("%d",&num);
+	if (num <= 0) 
+	{
+        printf("No nodes to create.\n");
+        return 0;
+	}
+	struct node *head =(struct node*)malloc(sizeof(struct node));
+	printf("\nEnter data:  ");
+	scanf("%d",&head->data);
+	head->next=head;
+	struct node *tail = head;
+
+	for(int i=1; i<num; i++)
+	{
+		n=(struct node*)malloc(sizeof(struct node));
+		scanf("%d",&n->data);
+		n->next=head;
+		tail->next=n;
+		tail=tail->next;
+
+	}
+	printf("\nBefore  Deleting: ");
+	display(head);
+    delete_begin(&head);
+	printf("\nAfter Deleting: ");
+	display(head);
+	return 0;
+}
+
+
+OUTPUT:
+
+
+Enter number of nodes: 5
+
+Enter data:  12  2 3 4 5
+
+Before  Deleting: The linked list is: 1 2 3 4 5 
+
+After Deleting: The linked list is: 2 3 4 5 
