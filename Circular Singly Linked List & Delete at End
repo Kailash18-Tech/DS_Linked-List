@@ -6,7 +6,7 @@ struct node
 	int  data;
 	struct node *next;
 };
-void delete_middle(struct node**head)
+void delete_end(struct node**head)
 {	
    
 	struct node *old,*p;
@@ -58,7 +58,7 @@ int main ()
 	}
 	printf("\nBefore  Deleting: ");
 	display(head);
-    delete_middle(&head);
+    delete_end(&head);
 	printf("\nAfter Deleting: ");
 	display(head);
 	return 0;
