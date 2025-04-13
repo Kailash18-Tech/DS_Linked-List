@@ -51,6 +51,12 @@ int main ()
 	struct node *n;
 	printf("Enter number of nodes: ");
 	scanf("%d",&num);
+       if (num <= 0) 
+	{
+        printf("No nodes to create.\n");
+        return 0;
+	}
+
 	struct node *head=(struct node*)malloc(sizeof(struct node));
 	printf("\nEnter data: ");
 	scanf("%d",&head->data);
