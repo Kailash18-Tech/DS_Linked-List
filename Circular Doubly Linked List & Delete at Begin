@@ -1,0 +1,84 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int  data;
+	struct node *prev;
+	struct node *next;
+};
+void display(struct node *head)
+{
+    struct node *p;
+    p=head;
+    printf("The Linked List : " );
+    do
+    { 
+        printf("%d ",p->data);
+        p=p->next;
+    }
+    while(p!=head);
+   
+	printf ("\n");
+}
+void delete_begin(struct node **head)
+{
+  
+    struct node *p,*temp;
+    p=*head; 
+    temp=*head;
+    while(temp->next!=*head)
+    temp=temp->next;
+    *head=p->next;
+    p->prev=NULL;
+    temp->next=*head;
+    free(p);
+    
+}
+int main ()
+{	int num ;
+	struct node *n;
+	printf("Enter number of nodes: ");
+	scanf("%d",&num);
+       if (num <= 0) 
+	{
+        printf("No nodes to create.\n");
+        return 0;
+	}
+
+	struct node *head=(struct node*)malloc(sizeof(struct node));
+	printf("\nEnter data: ");
+	scanf("%d",&head->data);
+	head->prev=head;
+	head->next=head;
+	struct node *tail = head;
+
+	for(int i=1; i<num; i++)
+	{
+		n=(struct node*)malloc(sizeof(struct node));
+		scanf("%d",&n->data);
+		n->prev=NULL;
+		n->next=NULL;
+		tail->next=n;
+		n->prev=tail;
+		n->next=head;
+		head->prev=n;
+		tail=tail->next;
+	}
+	printf("\nBefore Deleting: ");
+	display(head);
+	delete_begin(&head);
+	printf("\nAfter Deleting: ");
+	display(head);
+
+	return 0;
+}
+
+OUTPUT :
+  
+Enter number of nodes: 5
+
+Enter data: 1 2 3 4 5
+
+Before Deleting: The Linked List : 1 2 3 4 5 
+
+After Deleting: The Linked List : 2 3 4 5 
