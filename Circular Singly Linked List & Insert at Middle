@@ -5,7 +5,7 @@ struct node
 	int  data;
 	struct node *next;
 };
-void insertbegin(struct node**head)
+void insert_middle(struct node**head)
 {	int ele,pos;
 	struct node *p;
 	struct node *old;
@@ -62,7 +62,7 @@ int main ()
 	}
 	printf("\nBefore inserting: ");
 	display(head);
-	insertbegin(&head);
+	insert_middle(&head);
 	printf("\nAfter inserting: ");
 	display(head);
 	return 0;
